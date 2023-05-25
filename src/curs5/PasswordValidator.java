@@ -18,6 +18,7 @@ public class PasswordValidator {
 	 */
 	String username;
 	String password;
+	static boolean valid;
 	Scanner scan = new Scanner(System.in);
 	
 	public void getUsername() {
@@ -25,9 +26,9 @@ public class PasswordValidator {
 		username = scan.next();
 	}
 	
-	public void getPassword() {
-		System.out.println("Te rog introdu parola: ");
-		password = scan.next();
+	public String getPassword() {
+		System.out.println("Te rog introdu parola:");
+		return scan.next();
 	}
 	
 	public void printPasswordRules() {
@@ -37,18 +38,34 @@ public class PasswordValidator {
 				+ "Parola nu trebuie sa fie ca username-ul");
 	}
 	
-	public boolean checkPasswordRules() {
-		if (password.length() <10 ) {
-			
+	public void checkPasswordRules(String password) {
+		valid = true;		
+		if(password.length() < 10) {
 			System.out.println("Parola trebuie sa fie minim 10 caractere");
-			return false;
+			valid = false;
 		}
-		return true;
-		
+		if(password.equals(password.toLowerCase())) {
+			System.out.println("Parola trebuie sa contina un upper case");
+			valid = false;
+		}
+		if(password.equals(username)) {
+			System.out.println("Parola nu trebuie sa fie la fel ca username");
+			valid = false;
+		}	
 	}
 
 	public static void main(String[] args) {
+		
+		PasswordValidator obj = new PasswordValidator();
+		obj.printPasswordRules();
+		obj.getUsername();
+		
+		do {
+			obj.checkPasswordRules(obj.getPassword());
+			
+		}while(!valid);
 	
+		System.out.println("Parola este valida!");
 	}
 
 }
