@@ -3,11 +3,11 @@ import java.util.*;
 
 public class Tema5Ex1 {
 	
-	public String DEFAULT_USERNAME = "TestUser";
-	public int DEFAULT_PASSWORD = 1234;
+	public final String DEFAULT_USERNAME = "TestUser";
+	public final int DEFAULT_PASSWORD = 1234;
 	public String username;
 	public int password;
-	public int ATTEMPTS = 3;
+	public final int ATTEMPTS = 3;
 	public int counter = 0;
 	
 	Scanner scan = new Scanner(System.in);
