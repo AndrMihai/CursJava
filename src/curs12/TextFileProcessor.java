@@ -2,6 +2,7 @@ package curs12;
 
 import java.io.IOException;
 import java.io.*;
+import java.util.*;
 
 public class TextFileProcessor {
 	
@@ -14,6 +15,31 @@ public class TextFileProcessor {
 		}
 		
 		
+	}
+	
+	public void readTxt() {
+		try(Scanner scan = new Scanner(new File("test.txt"))){
+			
+			while(scan.hasNext()) {
+				System.out.println(scan.nextLine());
+			}
+			
+			
+			
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateTxtFile(String textToUpdate) {
+		
+		try(FileWriter file = new FileWriter("test.txt")){
+			
+			file.append(textToUpdate);
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

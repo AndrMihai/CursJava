@@ -1,1 +1,1 @@
-Textul scris in fisier din java
+Al;t text in fisier
