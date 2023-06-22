@@ -8,6 +8,8 @@ public class TestPropertiesFileProcessor {
 		obj.writePropertiesFile();
 		obj.readPropertiesFile("email");
 		obj.readPropertiesFile("user");
+		obj.updatePropertiesFile("browser", "chrome");
+		obj.deleteFromPropertiesFile("email");
 	}
 
 }

@@ -17,7 +17,6 @@ public class PropertiesFileProcessor {
 			
 			//outPutStream.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -33,5 +32,43 @@ public class PropertiesFileProcessor {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updatePropertiesFile(String key, String value) {
+		Properties prop = new Properties();
+		try(FileInputStream input = new FileInputStream("test.properties")){
+			prop.load(input);
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		prop.setProperty(key, value);
+		 try(FileOutputStream output = new FileOutputStream("test.properties")){
+			 
+			 prop.setProperty(key, value);
+			 prop.store(output, null);
+			 
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
 
-}
+	}
+	public void deleteFromPropertiesFile(String key) {
+		Properties prop = new Properties();
+		try(FileInputStream input = new FileInputStream("test.properties")){
+			prop.load(input);
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		 try(FileOutputStream output = new FileOutputStream("test.properties")){
+			 
+			 prop.remove(key);
+			 prop.store(output, null);
+			 
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+
+	
+	}
+	
+	}
+
